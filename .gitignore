@@ -1,0 +1,19 @@
+# Ignore enviroment files because they may containsecrets
+.env
+.env.*
+
+# Ignore private keys
+*.pem
+*.key
+
+# Ignore Terraform working data and state files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Ignores VS code's local configuration
+.vscode/
+
+# Ignore installed Node.js dependencies
+node_modules/
