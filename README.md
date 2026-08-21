@@ -84,6 +84,10 @@ Each meaningful change follows a structured engineering workflow:
 8. Merge the change into `main`.
 9. Update the project documentation and learning record.
 
+## Project Documentation
+
+- [DevOps Engineering Progress Log](docs/progress-log.md)
+
 ## Current Status
 
 The repository foundation and professional Git workflow are currently being established. Infrastructure automation, CI/CD, monitoring, Linux, and container implementations will be added progressively.
