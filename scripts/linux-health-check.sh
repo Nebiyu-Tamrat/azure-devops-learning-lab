@@ -14,3 +14,15 @@ if (( $(echo "$CPU_USAGE > $CPU_THRESHOLD" | bc -l) )); then
 else
     echo "CPU Status: OK"
 fi
+
+MEMORY_USAGE=$(free | awk '/Mem:/ {printf "%.0f", ($3/$2)*100}')
+MEMORY_THRESHOLD=80
+
+echo "Memory Usage: ${MEMORY_USAGE}%"
+
+if [ "$MEMORY_USAGE" -gt "$MEMORY_THRESHOLD" ]; then
+    echo "Memory Status: WARNING"
+else
+    echo "Memory Status: OK"
+fi
+
