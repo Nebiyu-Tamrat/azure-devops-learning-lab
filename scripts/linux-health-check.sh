@@ -70,3 +70,8 @@ fi
 echo ""
 echo "Recent System Logs:"
 journalctl -p warning -n 10 --no-pager
+
+echo ""
+echo "================================="
+echo "        Health Check Complete"
+echo "================================="
