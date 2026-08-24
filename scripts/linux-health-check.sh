@@ -26,6 +26,13 @@ else
     echo "Memory Status: OK"
 fi
 
+echo ""
+echo "System Uptime:"
+uptime -p
+
+echo ""
+echo "Load Average:"
+uptime | awk -F'load average:' '{print $2}'
 DISK_THRESHOLD=80
 
 echo ""
