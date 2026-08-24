@@ -33,3 +33,21 @@ uptime -p
 echo ""
 echo "Load Average:"
 uptime | awk -F'load average:' '{print $2}'
+DISK_THRESHOLD=80
+
+echo ""
+echo "Disk Usage:"
+
+df -h --output=target,pcent | awk 'NR>1 {
+    gsub("%","",$2)
+    printf "%-20s %s%%\n", $1, $2
+}'
+
+ROOT_DISK_USAGE=$(df / | awk 'NR==2 {gsub("%","",$5); print $5}')
+
+if [ "$ROOT_DISK_USAGE" -gt "$DISK_THRESHOLD" ]; then
+    echo "Disk Status: WARNING"
+else
+    echo "Disk Status: OK"
+fi
+
