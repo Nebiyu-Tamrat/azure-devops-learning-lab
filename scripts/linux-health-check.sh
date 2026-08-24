@@ -54,3 +54,15 @@ fi
 echo ""
 echo "Top Running Processes:"
 ps -eo pid,comm,%cpu,%mem --sort=-%cpu | head -n 6
+
+echo ""
+echo "Failed systemd Services:"
+
+FAILED_SERVICES=$(systemctl --failed --no-legend)
+
+if [ -z "$FAILED_SERVICES" ]; then
+    echo "Service Status: OK"
+else
+    echo "Service Status: WARNING"
+    echo "$FAILED_SERVICES"
+fi
