@@ -51,3 +51,6 @@ else
     echo "Disk Status: OK"
 fi
 
+echo ""
+echo "Top Running Processes:"
+ps -eo pid,comm,%cpu,%mem --sort=-%cpu | head -n 6
