@@ -66,3 +66,7 @@ else
     echo "Service Status: WARNING"
     echo "$FAILED_SERVICES"
 fi
+
+echo ""
+echo "Recent System Logs:"
+journalctl -p warning -n 10 --no-pager
