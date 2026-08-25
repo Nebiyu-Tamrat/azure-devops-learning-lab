@@ -94,7 +94,7 @@ I corrected the filename and staged the intended files:
 git add README.md .gitignore .gitattributes
 ```
 
-#### Line-ending warning
+#### Line-ending warning.
 
 While staging files, Git reported that CRLF line endings would be replaced with LF. This was expected because I configured the repository for Linux-compatible line endings using `.gitattributes`.
 
