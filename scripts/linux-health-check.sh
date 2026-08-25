@@ -1,4 +1,5 @@
 #!/bin/bash
+HEALTH_STATUS=0
 
 echo "================================="
 echo "      Linux System Health Check"
@@ -11,6 +12,7 @@ CPU_THRESHOLD=80
 
 if (( $(echo "$CPU_USAGE > $CPU_THRESHOLD" | bc -l) )); then
     echo "CPU Status: WARNING"
+    HEALTH_STATUS=1
 else
     echo "CPU Status: OK"
 fi
@@ -22,6 +24,7 @@ echo "Memory Usage: ${MEMORY_USAGE}%"
 
 if [ "$MEMORY_USAGE" -gt "$MEMORY_THRESHOLD" ]; then
     echo "Memory Status: WARNING"
+    HEALTH_STATUS=1
 else
     echo "Memory Status: OK"
 fi
@@ -47,6 +50,7 @@ ROOT_DISK_USAGE=$(df / | awk 'NR==2 {gsub("%","",$5); print $5}')
 
 if [ "$ROOT_DISK_USAGE" -gt "$DISK_THRESHOLD" ]; then
     echo "Disk Status: WARNING"
+    HEALTH_STATUS=1
 else
     echo "Disk Status: OK"
 fi
@@ -75,3 +79,11 @@ echo ""
 echo "================================="
 echo "        Health Check Complete"
 echo "================================="
+
+if [ "$HEALTH_STATUS" -eq 0 ]; then
+    echo "Overall Health Status: OK"
+else
+    echo "Overall Health Status: WARNING"
+fi
+
+exit "$HEALTH_STATUS"
